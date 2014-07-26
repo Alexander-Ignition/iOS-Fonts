@@ -21,6 +21,7 @@
 		0443FE0F18E6F22C00462BA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0443FE0D18E6F22C00462BA4 /* InfoPlist.strings */; };
 		0443FE1118E6F22C00462BA4 /* iOS_FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443FE1018E6F22C00462BA4 /* iOS_FontsTests.m */; };
 		0443FE1C18E6F27700462BA4 /* AITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443FE1B18E6F27700462BA4 /* AITableViewController.m */; };
+		1166F3751983D8F700CC613F /* AIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166F3741983D8F700CC613F /* AIViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		0443FE1018E6F22C00462BA4 /* iOS_FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_FontsTests.m; sourceTree = "<group>"; };
 		0443FE1A18E6F27700462BA4 /* AITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableViewController.h; sourceTree = "<group>"; };
 		0443FE1B18E6F27700462BA4 /* AITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableViewController.m; sourceTree = "<group>"; };
+		1166F3731983D8F700CC613F /* AIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIViewController.h; sourceTree = "<group>"; };
+		1166F3741983D8F700CC613F /* AIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				0443FDF718E6F22C00462BA4 /* Main.storyboard */,
 				0443FE1A18E6F27700462BA4 /* AITableViewController.h */,
 				0443FE1B18E6F27700462BA4 /* AITableViewController.m */,
+				1166F3731983D8F700CC613F /* AIViewController.h */,
+				1166F3741983D8F700CC613F /* AIViewController.m */,
 				0443FDFD18E6F22C00462BA4 /* Images.xcassets */,
 				0443FDEC18E6F22C00462BA4 /* Supporting Files */,
 			);
@@ -252,6 +257,7 @@
 			files = (
 				0443FDF618E6F22C00462BA4 /* AIAppDelegate.m in Sources */,
 				0443FDF218E6F22C00462BA4 /* main.m in Sources */,
+				1166F3751983D8F700CC613F /* AIViewController.m in Sources */,
 				0443FE1C18E6F27700462BA4 /* AITableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +463,7 @@
 				0443FE1618E6F22D00462BA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0443FE1718E6F22D00462BA4 /* Build configuration list for PBXNativeTarget "iOS FontsTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +472,7 @@
 				0443FE1918E6F22D00462BA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

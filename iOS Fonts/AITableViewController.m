@@ -8,9 +8,12 @@
 
 
 #import "AITableViewController.h"
+#import "AIViewController.h"
 
 
 @interface AITableViewController ()
+
+@property (strong, nonatomic) NSArray *fontFamilyNames;
 
 @end
 
@@ -29,16 +32,40 @@
 }
 
 
+#pragma mark - Getters
+
+- (NSArray *)fontFamilyNames
+{
+    if (_fontFamilyNames) {
+        return _fontFamilyNames;
+    }
+    NSArray *familyNames = [UIFont familyNames];
+    _fontFamilyNames = [familyNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    return _fontFamilyNames;
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
+                                         andFontNameIndex:indexPath.row];
+    NSString *familyFontName = [self.fontFamilyNames objectAtIndex:indexPath.section];
+    AIViewController *controller = segue.destinationViewController;
+    controller.fontName = fontName;
+    controller.familyFontName = familyFontName;
+}
+
+
 #pragma mark - UIFont
 
-- (NSArray *)fontNamesForFamilyNameIndex:(NSInteger)index
+- (NSString *)fontNameForFamilyNameIndex:(NSInteger)index andFontNameIndex:(NSInteger)index2
 {
-    NSArray *familyNames = [UIFont familyNames];
-    NSArray *sortedArray = [familyNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    
-    NSString *familyName = [sortedArray objectAtIndex:index];
+    NSString *familyName = [self.fontFamilyNames objectAtIndex:index];
     NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
-    return fontNames;
+    return [fontNames objectAtIndex:index2];
 }
 
 
@@ -46,29 +73,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSArray *familyNames = [UIFont familyNames];
-    NSArray *sortedArray = [familyNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    return [sortedArray count];
+    return [self.fontFamilyNames count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *familyNames = [UIFont familyNames];
-    NSArray *sortedArray = [familyNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    return [sortedArray objectAtIndex:section];
+    return [self.fontFamilyNames objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    /*
-    NSArray *familyNames = [UIFont familyNames];
-    NSString *familyName = [familyNames objectAtIndex:section];
+    NSString *familyName = [self.fontFamilyNames objectAtIndex:section];
     NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
     return [fontNames count];
-     */
-    return [[self fontNamesForFamilyNameIndex:section] count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -78,28 +96,37 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    /*
-    NSArray *familyNames = [UIFont familyNames];
-    NSString *familyName = [familyNames objectAtIndex:indexPath.section];
-    NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
-    
-    NSString *fontName = [fontNames objectAtIndex:indexPath.row];
-    */
-    
-    NSString *fontName = [[self fontNamesForFamilyNameIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ рус", fontName];
-    
-    UIFont *font1 = [UIFont fontWithName:fontName size:16];
-    cell.textLabel.font = font1;
+    NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
+                                         andFontNameIndex:indexPath.row];    
+    cell.textLabel.text = fontName;
+    cell.textLabel.font = [UIFont fontWithName:fontName size:16];
     
     return cell;
 }
 
-//- (NSArray *) sectionIndexTitlesForTableView: (UITableView *) tableView {
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
 //    NSArray *familyNames = [UIFont familyNames];
-//    NSArray *sortedArray = [familyNames sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+//    NSMutableArray *mArray = [NSMutableArray array];
+//    
+//    for (NSString *familyName in familyNames) {
+//        
+//        NSString *firstChar = [familyName substringToIndex:1];
+//        BOOL containts = [mArray containsObject:firstChar];
+//        if (!containts) {
+//            [mArray addObject:firstChar];
+////            [mArray addObject:@"*"];
+//        }
+//    }
+//    [mArray removeLastObject];
+//    NSArray *sortedArray = [mArray sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 //    return sortedArray;
+//}
+//
+//// tell table which section corresponds to section title/index (e.g. "B",1))
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    return 1;
 //}
 
 @end

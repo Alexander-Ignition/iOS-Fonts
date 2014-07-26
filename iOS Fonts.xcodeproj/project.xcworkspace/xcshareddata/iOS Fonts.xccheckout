@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EA7CB5BD-867B-4D2E-B9C6-CF91EEF9F478</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iOS Fonts</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EC2FD96D-93D8-420D-AD2C-8947BB1A2503</key>
+		<string>https://github.com/Alexander-Ignition/iOS-Fonts.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS Fonts.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EC2FD96D-93D8-420D-AD2C-8947BB1A2503</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Alexander-Ignition/iOS-Fonts.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EC2FD96D-93D8-420D-AD2C-8947BB1A2503</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EC2FD96D-93D8-420D-AD2C-8947BB1A2503</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS-Fonts</string>
+		</dict>
+	</array>
+</dict>
+</plist>
