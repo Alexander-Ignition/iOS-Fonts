@@ -56,16 +56,15 @@
         return _sectionIndexChar;
     }
     NSMutableArray *mArray = [NSMutableArray array];
+    [mArray addObject:UITableViewIndexSearch];
     NSMutableArray *mArray2 = [NSMutableArray array];
     for (NSString *familyName in self.fontFamilyNames) {
         NSString *firstChar = [familyName substringToIndex:1];
         if (![mArray containsObject:firstChar]) {
             [mArray addObject:firstChar];
             [mArray2 addObject:familyName];
-//            [mArray addObject:@" "];
         }
     }
-//    [mArray removeLastObject];
     self.sectionIndexTitle = mArray2;
     _sectionIndexChar = mArray;
     return _sectionIndexChar;
@@ -138,8 +137,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    NSString *fontName = [self.sectionIndexTitle objectAtIndex:index];
-    return [self.fontFamilyNames indexOfObject:fontName];
+    if (index == 0) {
+        [tableView setContentOffset:CGPointMake(0.0, -tableView.contentInset.top) animated:NO];
+        return NSNotFound;
+    } else {
+        NSString *fontName = [self.sectionIndexTitle objectAtIndex:(index - 1)];
+        return [self.fontFamilyNames indexOfObject:fontName];
+    }
 }
 
 
