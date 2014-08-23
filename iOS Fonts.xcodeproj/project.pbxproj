@@ -21,6 +21,8 @@
 		0443FE0F18E6F22C00462BA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0443FE0D18E6F22C00462BA4 /* InfoPlist.strings */; };
 		0443FE1118E6F22C00462BA4 /* iOS_FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443FE1018E6F22C00462BA4 /* iOS_FontsTests.m */; };
 		0443FE1C18E6F27700462BA4 /* AITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0443FE1B18E6F27700462BA4 /* AITableViewController.m */; };
+		0480058F19A87F8A00BC9F38 /* AITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0480058E19A87F8A00BC9F38 /* AITableViewDataSource.m */; };
+		04D18A1919A8C40300BF443A /* AISearchDisplayDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D18A1819A8C40300BF443A /* AISearchDisplayDelegate.m */; };
 		1166F3751983D8F700CC613F /* AIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1166F3741983D8F700CC613F /* AIViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,10 @@
 		0443FE1018E6F22C00462BA4 /* iOS_FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_FontsTests.m; sourceTree = "<group>"; };
 		0443FE1A18E6F27700462BA4 /* AITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableViewController.h; sourceTree = "<group>"; };
 		0443FE1B18E6F27700462BA4 /* AITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableViewController.m; sourceTree = "<group>"; };
+		0480058D19A87F8A00BC9F38 /* AITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableViewDataSource.h; sourceTree = "<group>"; };
+		0480058E19A87F8A00BC9F38 /* AITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableViewDataSource.m; sourceTree = "<group>"; };
+		04D18A1719A8C40300BF443A /* AISearchDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISearchDisplayDelegate.h; sourceTree = "<group>"; };
+		04D18A1819A8C40300BF443A /* AISearchDisplayDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISearchDisplayDelegate.m; sourceTree = "<group>"; };
 		1166F3731983D8F700CC613F /* AIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIViewController.h; sourceTree = "<group>"; };
 		1166F3741983D8F700CC613F /* AIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,10 +124,8 @@
 				0443FDF418E6F22C00462BA4 /* AIAppDelegate.h */,
 				0443FDF518E6F22C00462BA4 /* AIAppDelegate.m */,
 				0443FDF718E6F22C00462BA4 /* Main.storyboard */,
-				0443FE1A18E6F27700462BA4 /* AITableViewController.h */,
-				0443FE1B18E6F27700462BA4 /* AITableViewController.m */,
-				1166F3731983D8F700CC613F /* AIViewController.h */,
-				1166F3741983D8F700CC613F /* AIViewController.m */,
+				04D18A1B19A8C9F400BF443A /* Master */,
+				04D18A1C19A8C9FC00BF443A /* Detail */,
 				0443FDFD18E6F22C00462BA4 /* Images.xcassets */,
 				0443FDEC18E6F22C00462BA4 /* Supporting Files */,
 			);
@@ -155,6 +159,36 @@
 				0443FE0D18E6F22C00462BA4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04D18A1A19A8C9DC00BF443A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0480058D19A87F8A00BC9F38 /* AITableViewDataSource.h */,
+				0480058E19A87F8A00BC9F38 /* AITableViewDataSource.m */,
+				04D18A1719A8C40300BF443A /* AISearchDisplayDelegate.h */,
+				04D18A1819A8C40300BF443A /* AISearchDisplayDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		04D18A1B19A8C9F400BF443A /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				0443FE1A18E6F27700462BA4 /* AITableViewController.h */,
+				0443FE1B18E6F27700462BA4 /* AITableViewController.m */,
+				04D18A1A19A8C9DC00BF443A /* Delegates */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		04D18A1C19A8C9FC00BF443A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1166F3731983D8F700CC613F /* AIViewController.h */,
+				1166F3741983D8F700CC613F /* AIViewController.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,8 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0480058F19A87F8A00BC9F38 /* AITableViewDataSource.m in Sources */,
 				0443FDF618E6F22C00462BA4 /* AIAppDelegate.m in Sources */,
 				0443FDF218E6F22C00462BA4 /* main.m in Sources */,
+				04D18A1919A8C40300BF443A /* AISearchDisplayDelegate.m in Sources */,
 				1166F3751983D8F700CC613F /* AIViewController.m in Sources */,
 				0443FE1C18E6F27700462BA4 /* AITableViewController.m in Sources */,
 			);
