@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS Fonts/AITableViewController.m"
-            timestampString = "428764174.523566"
+            timestampString = "430494723.09913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-filterContentForSearchText:scope:"
-            landmarkType = "5">
+            startingLineNumber = "169"
+            endingLineNumber = "169">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS Fonts/AITableViewController.m"
-            timestampString = "428763336.238551"
+            timestampString = "430494723.09913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-tableView:sectionForSectionIndexTitle:atIndex:"
-            landmarkType = "5">
+            startingLineNumber = "154"
+            endingLineNumber = "154">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
