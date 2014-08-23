@@ -11,8 +11,6 @@
 
 @interface AIViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-
 @property (strong, nonatomic) NSString *fontName;
 @property (strong, nonatomic) NSString *familyFontName;
 

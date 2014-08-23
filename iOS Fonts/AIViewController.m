@@ -11,6 +11,8 @@
 
 @interface AIViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end
 
 
@@ -30,7 +32,7 @@
     
     self.textView.text = self.fontName;
     self.textView.font = [UIFont fontWithName:self.fontName size:20];
-    self.textView.textContainerInset = UIEdgeInsetsMake(20.f, 15.f, 20.f, 15.f);
+    self.textView.textContainerInset = UIEdgeInsetsMake(20.0f, 15.0f, 20.0f, 15.0f);
 }
 
 - (void)viewDidAppear:(BOOL)animated

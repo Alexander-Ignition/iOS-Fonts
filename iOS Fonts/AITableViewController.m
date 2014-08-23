@@ -31,12 +31,6 @@
 //    self.navigationController.navigationBar.titleTextAttributes = dict;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Getters
 
@@ -89,7 +83,12 @@
 
 - (NSString *)fontNameForFamilyNameIndex:(NSInteger)index andFontNameIndex:(NSInteger)index2
 {
-    NSString *familyName = [self.fontFamilyNames objectAtIndex:index];
+    NSString *familyName;
+    if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+        familyName = [self.searchResults objectAtIndex:index];
+    } else {
+        familyName = [self.fontFamilyNames objectAtIndex:index];
+    }
     NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
     return [fontNames objectAtIndex:index2];
 }
@@ -99,17 +98,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.fontFamilyNames count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResults count];
+    } else {
+        return [self.fontFamilyNames count];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.fontFamilyNames objectAtIndex:section];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.searchResults objectAtIndex:section];
+    } else {
+        return [self.fontFamilyNames objectAtIndex:section];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *familyName = [self.fontFamilyNames objectAtIndex:section];
+    NSString *familyName;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        familyName = [self.searchResults objectAtIndex:section];
+    } else {
+        familyName = [self.fontFamilyNames objectAtIndex:section];
+    }
     NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
     return [fontNames count];
 }
@@ -121,9 +133,14 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
-                                         andFontNameIndex:indexPath.row];    
+    NSString *familyName;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        familyName = [self.searchResults objectAtIndex:indexPath.section];
+    } else {
+        familyName = [self.fontFamilyNames objectAtIndex:indexPath.section];
+    }
+    NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
+    NSString *fontName = [fontNames objectAtIndex:indexPath.row];
     cell.textLabel.text = fontName;
     cell.textLabel.font = [UIFont fontWithName:fontName size:16];
     
@@ -149,18 +166,10 @@
 
 #pragma mark - search
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[cd] %@", searchString];
     self.searchResults = [self.fontFamilyNames filteredArrayUsingPredicate:resultPredicate];
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
     
     return YES;
 }
