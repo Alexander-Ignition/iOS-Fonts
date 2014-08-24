@@ -54,6 +54,20 @@
     return _fontFamilyNames;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%s indexPath = %@", __PRETTY_FUNCTION__, indexPath);
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        AIViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"detail"];
+        NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
+                                             andFontNameIndex:indexPath.row];
+        NSString *familyFontName = [self.fontFamilyNames objectAtIndex:indexPath.section];
+        controller.fontName = fontName;
+        controller.familyFontName = familyFontName;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

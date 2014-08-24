@@ -68,7 +68,7 @@
         <!--View Controller-->
         <scene sceneID="DvU-Aj-PLC">
             <objects>
-                <viewController id="OSE-Y3-Qmi" customClass="AIViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="OSE-Y3-Qmi" customClass="AIViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nZq-oH-AFM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
