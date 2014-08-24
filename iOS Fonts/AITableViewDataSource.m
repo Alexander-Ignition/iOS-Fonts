@@ -89,6 +89,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     NSString *familyName = [self.fontFamilyNames objectAtIndex:indexPath.section];
     NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
