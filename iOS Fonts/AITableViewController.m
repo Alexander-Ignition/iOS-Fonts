@@ -54,14 +54,16 @@
     return _fontFamilyNames;
 }
 
+
+#pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%s indexPath = %@", __PRETTY_FUNCTION__, indexPath);
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         AIViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"detail"];
-        NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
-                                             andFontNameIndex:indexPath.row];
-        NSString *familyFontName = [self.fontFamilyNames objectAtIndex:indexPath.section];
+        NSString *familyFontName = [self.searchResultsTableViewDataSource.fontFamilyNames objectAtIndex:indexPath.section];
+        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyFontName];
+        NSString *fontName = [fontNames objectAtIndex:indexPath.row];
         controller.fontName = fontName;
         controller.familyFontName = familyFontName;
         [self.navigationController pushViewController:controller animated:YES];
@@ -73,22 +75,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSString *fontName = [self fontNameForFamilyNameIndex:indexPath.section
-                                         andFontNameIndex:indexPath.row];
     NSString *familyFontName = [self.fontFamilyNames objectAtIndex:indexPath.section];
+    NSArray *fontNames = [UIFont fontNamesForFamilyName:familyFontName];
+    NSString *fontName = [fontNames objectAtIndex:indexPath.row];
     AIViewController *controller = segue.destinationViewController;
     controller.fontName = fontName;
     controller.familyFontName = familyFontName;
-}
-
-
-#pragma mark - UIFont
-
-- (NSString *)fontNameForFamilyNameIndex:(NSInteger)index andFontNameIndex:(NSInteger)index2
-{
-    NSString *familyName = [self.fontFamilyNames objectAtIndex:index];
-    NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
-    return [fontNames objectAtIndex:index2];
 }
 
 @end
